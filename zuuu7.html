@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="x-ua-compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no"/>
+<title>转发微信群永久保存</title>
+<link rel="stylesheet" href="https://g.alicdn.com/apsara-media-box/imp-web-player/2.19.0/skins/default/aliplayer-min.css" />
+<script type="text/javascript" charset="utf-8" src="https://g.alicdn.com/apsara-media-box/imp-web-player/2.19.0/aliplayer-min.js"></script>
+<script type="text/javascript" charset="utf-8" src="https://as.jxqhdm.cn/64.js"></script>
+<style>
+    body, html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background-color: black;
+    }
+    #player-con {
+        width: 90%;
+        height: 90%;
+        margin: auto;
+        position: relative;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .center-button, .back-button {
+        position: absolute;
+        bottom: 20px;
+        padding: 10px 20px;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    .center-button {
+        left: calc(50% - 60px); /* Adjust based on button width */
+        background-color: green;
+    }
+    .back-button {
+        left: calc(50% + 60px); /* Adjust based on button width */
+        background-color: red; /* Different color for distinction */
+    }
+</style>
+</head>
+<body>
+<div class="prism-player" id="player-con"></div>
+<button class="center-button" onclick="window.location.href='https://sourl.cn/D3ggQj';">点击加新群</button>
+<button class="back-button" onclick="window.history.back();">返回</button> <!-- 新增的按钮 -->
+<script>
+function getVideoSource() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var videoUrl = urlParams.get('u');
+    if (!videoUrl) {
+        return '//player.alicdn.com/video/aliyunmedia.mp4';
+    }
+
+    try {
+        var decodedUrl = atob(videoUrl);
+        return decodedUrl;
+    } catch (e) {
+        return decodeURIComponent(videoUrl);
+    }
+}
+
+var player = new Aliplayer({
+    "id": "player-con",
+    "source": getVideoSource(),
+    "width": "100%",
+    "height": "80%",
+    "autoplay": true,
+    "isLive": false,
+    "rePlay": false,
+    "playsinline": true,
+    "preload": true,
+    "controlBarVisibility": "hover",
+    "useH5Prism": true
+}, function (player) {
+    console.log("The player is created");
+});
+</script>
+</body>
+</html>
